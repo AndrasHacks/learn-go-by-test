@@ -3,10 +3,11 @@ package main
 import "fmt"
 
 func Hello(name string) string {
+	const englishHelloPrefix = "Hello, "
 	if len(name) == 0 {
-		return "Hello Gophers!"
+		return englishHelloPrefix + "World!"
 	}
-	return "Hello " + name + "!"
+	return englishHelloPrefix + name + "!"
 }
 
 func main() {

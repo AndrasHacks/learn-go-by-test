@@ -3,23 +3,25 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	got := Hello("")
-	want := "Hello Gophers!"
 
-	if got != want {
-		printError(got, want, t)
-	}
+	t.Run("Given empty string, when Hello(), then prints Hello, World!", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World!"
+
+		assertEquals(got, want, t)
+	})
+
+	t.Run("Given a name, when Hello(), then greets name.", func(t *testing.T) {
+		got := Hello("Chris")
+		want := "Hello, Chris!"
+
+		assertEquals(got, want, t)
+	})
+
 }
 
-func Test_GivenName_WhenHello_GreetsName(t *testing.T) {
-	got := Hello("Chris")
-	want := "Hello Chris!"
-
+func assertEquals(got string, want string, t *testing.T) {
 	if got != want {
-		printError(got, want, t)
+		t.Errorf("Got %q want %q", got, want)
 	}
-}
-
-func printError(got string, want string, t *testing.T) {
-	t.Errorf("Got %q want %q", got, want)
 }
