@@ -49,4 +49,13 @@ func TestSum(t *testing.T) {
 			t.Errorf("Got %v, but wanted %v", got, want)
 		}
 	})
+
+	t.Run("Given empty slice, When SumAllTails(), Then it does retrn 0 for that slice", func(t *testing.T) {
+		got := SumAllTails([]int{0, 1, 2}, []int{})
+		want := []int{3, 0}
+
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("Got %v, but wanted %v", got, want)
+		}
+	})
 }

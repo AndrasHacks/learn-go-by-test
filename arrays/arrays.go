@@ -21,7 +21,14 @@ func SumAll(numbersToSum ...[]int) (sums []int) {
 
 func SumAllTails(numbersToSum ...[]int) (sums []int) {
 	for _, numbers := range numbersToSum {
-		sums = append(sums, Sum(numbers[1:]))
+		if len(numbers) > 0 {
+
+			// Slices have fixed capacity as well, but new slices
+			// can be created from old ones --> like with append
+			sums = append(sums, Sum(numbers[1:]))
+		} else {
+			sums = append(sums, 0)
+		}
 	}
 	return sums
 }
